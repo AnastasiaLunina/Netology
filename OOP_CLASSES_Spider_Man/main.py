@@ -1,4 +1,4 @@
-class Character:
+class Man:
 
     def __init__(self, name, power, energy=100, hands=2): #all those attributes will be common for all instances
         self.name = name #we can change those attributes for each instance
@@ -57,7 +57,7 @@ class Spider:
         enemy.status = 'stunned'
 
 
-class SpiderMan(Character, Spider):
+class SpiderMan(Man, Spider):
     # we inherit everything from parent class and adding new attribute for an Instance with super()
     def __init__(self, name, power):
         super().__init__(name, power)
@@ -82,7 +82,7 @@ class SpiderMan(Character, Spider):
         Spider.attack(self, enemy) #call attack() from Spider directly from the class Spider
 
     def __lt__(self, other):
-        if not isinstance(other, Character):
+        if not isinstance(other, Man):
             print('Not a Character')
             return
         return self.power < other.power
@@ -98,7 +98,7 @@ print(peter_parker < miles_morales)
 print(peter_parker)
 
 
-enemy = Character('Some enemy', 10)
+enemy = Man('Some enemy', 10)
 enemy.health = 100
 
 peter_parker.attack(enemy)
